@@ -1,0 +1,1 @@
+!function(t){"use strict";t.module("yyo").factory("Todo",[function(){var o=function(o){var e=this;return e.todoMessage=null,t.extend(e,o),e},e=5;return o.prototype.isValid=function(){var o=t.isDefined(this.todoMessage),n=t.isString(this.todoMessage),s=!(!o||!n)&&this.todoMessage.length>=e;return o&&n&&s},o}])}(window.angular);

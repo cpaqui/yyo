@@ -1,12 +1,16 @@
 package com.yyo.main;
 
 import java.beans.PropertyVetoException;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.yyo.config.AngularJsHttpHandler;
 import com.yyo.config.RootRoute;
+import com.yyo.config.TodoRoute;
 import com.yyo.config.YoRoute;
 
+import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.UndertowOptions;
 
@@ -25,7 +29,7 @@ public final class Main {
 	private Main() {
 	}
 
-	public static void main(final String[] args) throws PropertyVetoException {
+	public static void main(final String[] args) throws PropertyVetoException, URISyntaxException {
 		try {
 			LOGGER.setLevel(Level.parse(System.getProperty(SERVER_LOG_LEVEL_PROPERTY, SERVER_LOG_LEVEL)));
 		} catch (Exception e) {
@@ -38,7 +42,8 @@ public final class Main {
 		LOGGER.info(String.format("Heroku mode %s", herokuModeOn ? "ON" : "OFF"));
 
 		RootRoute routes = new RootRoute();
-		routes.add(new YoRoute());
+		routes.add(new YoRoute())
+		      .add(new TodoRoute());
 
 		String host = System.getProperty(UNDERTOW_SERVER_HOST, SERVER_HOST);
 		int port;
@@ -59,8 +64,12 @@ public final class Main {
 		Undertow server = Undertow.builder()
 				.addHttpListener(port, host)
 				.setServerOption(UndertowOptions.IDLE_TIMEOUT, 3000)
-				.setHandler(routes.routes())
+				.setHandler(Handlers.path()
+						            .addPrefixPath("/api", routes.routes())
+						            .addPrefixPath("/", AngularJsHttpHandler.create(Main.class))
+						    )
 				.build();
+
 		server.start();
     }
 }

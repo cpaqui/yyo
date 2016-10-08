@@ -10,7 +10,7 @@ public class YoRoute implements Route {
 
 	public YoRoute() {
 		routes
-        .get("/", new YoHttpHandler());
+        .get("/yo", new YoHttpHandler());
 	}
 
 	@Override

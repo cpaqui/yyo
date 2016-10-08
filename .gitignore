@@ -2,3 +2,6 @@ target
 .settings
 .classpath
 .project
+**/node_modules
+**/unit_coverage
+**/bower_components

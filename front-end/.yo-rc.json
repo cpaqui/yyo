@@ -1,0 +1,11 @@
+{
+  "generator-ng-fullstack": {
+    "username": "cpaqui",
+    "appName": "yyo",
+    "stack": "client",
+    "server": "",
+    "client": "ng1",
+    "secure": false,
+    "cordova": false
+  }
+}
