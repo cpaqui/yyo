@@ -30,7 +30,21 @@
 					</descriptorRefs>
 					<finalName>undertow-servlet-yo</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
+					<archive>
+						<manifest>
+							<mainClass>com.yyo.main.Main</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
+				<executions>
+					<execution>
+						<id>build-jar-with-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

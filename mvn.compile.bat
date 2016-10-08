@@ -1,1 +1,3 @@
-call mvn -q clean compile assembly:single
+call mvn -q clean package
+
+pause

@@ -1,1 +1,3 @@
-call java -Xms=50m -Xmx=200m -jar target/undertow-servlet-yo.jar 
+call java -jar target/undertow-servlet-yo.jar 
+
+pause
