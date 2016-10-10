@@ -84,57 +84,6 @@
 
 	<profiles>
 		<profile>
-			<id>heroku</id>
-			<activation>
-				<os>
-					<family>unix</family>
-				</os>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<executions>
-							<!-- Required: The following will ensure `npm install` is called before
-								anything else during the 'Default Lifecycle' -->
-							<execution>
-								<id>npm install (initialize)</id>
-								<goals>
-									<goal>exec</goal>
-								</goals>
-								<phase>initialize</phase>
-								<configuration>
-									<workingDirectory>front-end</workingDirectory>
-									<executable>npm</executable>
-									<arguments>
-										<argument>install</argument>
-									</arguments>
-								</configuration>
-							</execution>
-
-							<execution>
-								<id>npm run build-dist</id>
-								<goals>
-									<goal>exec</goal>
-								</goals>
-								<phase>compile</phase>
-								<configuration>
-									<workingDirectory>front-end</workingDirectory>
-									<executable>npm</executable>
-									<arguments>
-										<argument>run</argument>
-										<argument>build-dist</argument>
-									</arguments>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
 			<id>local</id>
 			<activation>
 				<os>
