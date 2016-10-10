@@ -5,3 +5,4 @@ target
 **/node_modules
 **/unit_coverage
 front-end/client/dev/bower_components/
+hs_err*

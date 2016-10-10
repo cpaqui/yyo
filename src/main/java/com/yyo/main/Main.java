@@ -1,6 +1,7 @@
 package com.yyo.main;
 
 import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +30,7 @@ public final class Main {
 	private Main() {
 	}
 
-	public static void main(final String[] args) throws PropertyVetoException, URISyntaxException {
+	public static void main(final String[] args) throws PropertyVetoException, URISyntaxException, IOException {
 		try {
 			LOGGER.setLevel(Level.parse(System.getProperty(SERVER_LOG_LEVEL_PROPERTY, SERVER_LOG_LEVEL)));
 		} catch (Exception e) {

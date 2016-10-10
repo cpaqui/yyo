@@ -1,5 +1,6 @@
 package com.yyo.config;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import com.yyo.service.DefaultHttpHandler;
@@ -13,9 +14,10 @@ import io.undertow.server.handlers.resource.ResourceManager;
 
 public class AngularJsHttpHandler {
 
-	public static HttpHandler create (@SuppressWarnings("rawtypes") Class clazz) {
+	public static HttpHandler create (@SuppressWarnings("rawtypes") Class clazz) throws IOException {
 	    final ResourceManager staticResources =
 	            new ClassPathResourceManager(clazz.getClassLoader(), "dist");
+
 	    // Cache tuning is copied from Undertow unit tests.
 	    final ResourceManager cachedResources =
 	            new CachingResourceManager(100, 65536,
