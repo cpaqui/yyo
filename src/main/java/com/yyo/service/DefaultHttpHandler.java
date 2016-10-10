@@ -21,7 +21,7 @@ public class DefaultHttpHandler implements HttpHandler {
 
 	@Override
 	public void handleRequest(HttpServerExchange exchange) throws Exception {
-		exchange.setRelativePath("/");
+//		exchange.setRelativePath("/");
 		exchange.dispatch(defaultHandler);
 	}
 }

@@ -1,1 +1,1 @@
-!function(o){"use strict";o.module("yyo").config(["$routeProvider",function(o){o.when("/",{templateUrl:"todo/templates/todo.html",controller:"TodoController",controllerAs:"todoCtrl"}).otherwise({redirectTo:"/"})}])}(window.angular);
+!function(o){"use strict";o.module("yyo").config(["$routeProvider",function(o){o.when("/",{templateUrl:"todo/templates/todo.html",controller:"TodoController",controllerAs:"todoCtrl"}).when("/todos",{templateUrl:"todo/templates/todo-todo.html",controller:"TodoController",controllerAs:"todoCtrl"}).otherwise({redirectTo:"/"})}])}(window.angular);

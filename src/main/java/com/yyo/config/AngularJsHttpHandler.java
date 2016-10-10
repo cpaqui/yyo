@@ -3,7 +3,7 @@ package com.yyo.config;
 import java.io.IOException;
 import java.time.Duration;
 
-import com.yyo.service.DefaultHttpHandler;
+import com.yyo.service.DefaultResourceHttpHandler;
 
 import io.undertow.server.HttpHandler;
 import io.undertow.server.handlers.cache.DirectBufferCache;
@@ -24,9 +24,9 @@ public class AngularJsHttpHandler {
 	                                       new DirectBufferCache(1024, 10, 10480),
 	                                       staticResources,
 	                                       (int)Duration.ofDays(1).getSeconds());
-	    final ResourceHandler resourceHandler = new ResourceHandler(cachedResources, new DefaultHttpHandler());
+	    final ResourceHandler resourceHandler = new ResourceHandler(cachedResources, new DefaultResourceHttpHandler());
 	    resourceHandler.setWelcomeFiles("index.html");
-	    resourceHandler.setDirectoryListingEnabled(true);
+	    resourceHandler.setDirectoryListingEnabled(false);
 
 	    return resourceHandler;
 	}
