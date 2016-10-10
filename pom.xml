@@ -106,7 +106,7 @@
 								<phase>initialize</phase>
 								<configuration>
 									<workingDirectory>front-end</workingDirectory>
-									<executable>npm.cmd</executable>
+									<executable>npm</executable>
 									<arguments>
 										<argument>install</argument>
 									</arguments>
@@ -121,7 +121,7 @@
 								<phase>compile</phase>
 								<configuration>
 									<workingDirectory>front-end</workingDirectory>
-									<executable>npm.cmd</executable>
+									<executable>npm</executable>
 									<arguments>
 										<argument>run</argument>
 										<argument>build-dist</argument>
