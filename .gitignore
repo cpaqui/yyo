@@ -4,4 +4,4 @@ target
 .project
 **/node_modules
 **/unit_coverage
-**/bower_components
+front-end/client/dev/bower_components/
