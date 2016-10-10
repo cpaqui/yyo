@@ -23,6 +23,7 @@ public class AngularJsHttpHandler {
 	    final ResourceHandler resourceHandler = new ResourceHandler(cachedResources);
 	    resourceHandler.setWelcomeFiles("index.html");
 	    resourceHandler.setDirectoryListingEnabled(true);
+
 	    return resourceHandler;
 	}
 }

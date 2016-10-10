@@ -62,12 +62,10 @@ public final class Main {
 		LOGGER.info(String.format("Start server at %s:%s", host, port));
 
 		Undertow server = Undertow.builder()
-				.addHttpListener(port, host)
+				.addHttpListener(port, host, Handlers.path()
+			            .addPrefixPath("/api", routes.routes())
+			            .addPrefixPath("/", AngularJsHttpHandler.create(Main.class)))
 				.setServerOption(UndertowOptions.IDLE_TIMEOUT, 3000)
-				.setHandler(Handlers.path()
-						            .addPrefixPath("/api", routes.routes())
-						            .addPrefixPath("/", AngularJsHttpHandler.create(Main.class))
-						    )
 				.build();
 
 		server.start();
