@@ -23,7 +23,9 @@ public class DefaultResourceHttpHandler implements HttpHandler {
 
 	@Override
 	public void handleRequest(HttpServerExchange exchange) throws Exception {
+		System.out.println(String.format("StatusCode: %d Path: %s", exchange.getStatusCode(), exchange.getRelativePath()));
 		exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/html; charset=UTF-8");
 		indexHtml.serve(exchange.getResponseSender(), exchange, IoCallback.END_EXCHANGE);
+		exchange.endExchange();
 	}
 }
