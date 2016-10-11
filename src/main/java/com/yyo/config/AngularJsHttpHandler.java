@@ -9,8 +9,8 @@ import io.undertow.server.HttpHandler;
 import io.undertow.server.handlers.cache.DirectBufferCache;
 import io.undertow.server.handlers.resource.CachingResourceManager;
 import io.undertow.server.handlers.resource.ClassPathResourceManager;
-import io.undertow.server.handlers.resource.ResourceHandler;
 import io.undertow.server.handlers.resource.ResourceManager;
+import io.undertow.util.StatusCodes;
 
 public class AngularJsHttpHandler {
 
@@ -24,9 +24,14 @@ public class AngularJsHttpHandler {
 	                                       new DirectBufferCache(1024, 10, 10480),
 	                                       staticResources,
 	                                       (int)Duration.ofDays(1).getSeconds());
-	    final ResourceHandler resourceHandler = new ResourceHandler(cachedResources, new DefaultResourceHttpHandler());
+
+	    DefaultResourceHttpHandler exceptionHandler = new DefaultResourceHttpHandler();
+
+	    final ResourceHandler resourceHandler = new ResourceHandler(cachedResources);
 	    resourceHandler.setWelcomeFiles("index.html");
 	    resourceHandler.setDirectoryListingEnabled(false);
+	    resourceHandler.addExceptionHandler(StatusCodes.NOT_FOUND, exceptionHandler);
+	    resourceHandler.addExceptionHandler(StatusCodes.FORBIDDEN, exceptionHandler);
 
 	    return resourceHandler;
 	}

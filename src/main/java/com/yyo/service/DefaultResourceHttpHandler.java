@@ -1,9 +1,6 @@
 package com.yyo.service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 import io.undertow.io.IoCallback;
 import io.undertow.server.HttpHandler;
@@ -20,23 +17,8 @@ public class DefaultResourceHttpHandler implements HttpHandler {
 	public DefaultResourceHttpHandler() throws IOException {
 		try (ResourceManager staticResources =
 	            new ClassPathResourceManager(this.getClass().getClassLoader(), "dist");) {
-
 			indexHtml = staticResources.getResource("index.html");
 		}
-	}
-
-	private static String getFile(File file) throws FileNotFoundException {
-		StringBuilder result = new StringBuilder("");
-
-		try (Scanner scanner = new Scanner(file)) {
-
-			while (scanner.hasNextLine()) {
-				result.append(scanner.nextLine());
-			}
-			scanner.close();
-		}
-
-		return result.toString();
 	}
 
 	@Override
