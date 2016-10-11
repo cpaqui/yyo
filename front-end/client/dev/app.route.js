@@ -11,7 +11,7 @@
             controller: 'TodoController',
             controllerAs: 'todoCtrl'
           })
-          .when('/todos', {
+          .when('/todo', {
             templateUrl: 'todo/templates/todo-todo.html',
             controller: 'TodoController',
             controllerAs: 'todoCtrl'
